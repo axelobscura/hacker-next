@@ -1,4 +1,9 @@
+import fetch from 'isomorphic-fetch';
+
 class Index extends React.Component {
+    static getInitialProps(){
+
+    }
     render(){
         return(
             <div>
