@@ -2441,29 +2441,41 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_error__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/error */ "./node_modules/next/error.js");
-/* harmony import */ var next_error__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_error__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_StoryList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/StoryList */ "./components/StoryList.js");
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_error__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/error */ "./node_modules/next/error.js");
+/* harmony import */ var next_error__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_error__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_StoryList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/StoryList */ "./components/StoryList.js");
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 var _jsxFileName = "/Users/axelobscura/Desktop/hacker-next/pages/index.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
 
 
 
-class Index extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
-  static async getInitialProps() {
+class Index extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
+  static async getInitialProps({
+    req,
+    res,
+    query
+  }) {
     let stories;
+    let page;
+    console.log(query);
 
     try {
-      const response = await isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1___default()('https://node-hnapi.herokuapp.com/news?page=1');
+      page = Number(query.page) || 1;
+      const response = await isomorphic_fetch__WEBPACK_IMPORTED_MODULE_2___default()(`https://node-hnapi.herokuapp.com/news?page=${page}`);
       stories = await response.json();
     } catch (err) {
       console.log(err);
@@ -2471,52 +2483,82 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     }
 
     return {
+      page,
       stories
     };
   }
 
   render() {
     const {
-      stories
+      stories,
+      page
     } = this.props;
 
     if (stories.length === 0) {
-      return __jsx(next_error__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      return __jsx(next_error__WEBPACK_IMPORTED_MODULE_3___default.a, {
         statusCode: 503,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 26,
           columnNumber: 20
         }
       });
     }
 
-    return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
       title: "Hacker News",
       description: "A Hacker News Clone",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25,
+        lineNumber: 29,
         columnNumber: 13
       }
     }, __jsx("h1", {
+      className: "jsx-2104676512",
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26,
+        lineNumber: 30,
         columnNumber: 17
       }
-    }, "HACKER NEXT"), __jsx(_components_StoryList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }, "HACKER NEXT"), __jsx(_components_StoryList__WEBPACK_IMPORTED_MODULE_5__["default"], {
       stories: stories,
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27,
+        lineNumber: 31,
         columnNumber: 17
       }
-    }));
+    }), __jsx("footer", {
+      className: "jsx-2104676512",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32,
+        columnNumber: 17
+      }
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      href: `?page=${page + 1}`,
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33,
+        columnNumber: 21
+      }
+    }, __jsx("a", {
+      className: "jsx-2104676512",
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34,
+        columnNumber: 25
+      }
+    }, "NEXT PAGE (", page + 1, ")"))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+      id: "2104676512",
+      __self: this
+    }, "footer.jsx-2104676512{padding:1em;}footer.jsx-2104676512 a.jsx-2104676512{font-weight:bold;color:black;-webkit-text-decoration:none;text-decoration:none;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9heGVsb2JzY3VyYS9EZXNrdG9wL2hhY2tlci1uZXh0L3BhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQW9DNEIsQUFHcUMsQUFHSyxZQUZyQixLQUdnQixZQUNTLGtEQUN6QiIsImZpbGUiOiIvVXNlcnMvYXhlbG9ic2N1cmEvRGVza3RvcC9oYWNrZXItbmV4dC9wYWdlcy9pbmRleC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBmZXRjaCBmcm9tICdpc29tb3JwaGljLWZldGNoJztcbmltcG9ydCBFcnJvciBmcm9tICduZXh0L2Vycm9yJztcbmltcG9ydCBMaW5rIGZyb20gJ25leHQvbGluayc7XG5pbXBvcnQgU3RvcnlMaXN0IGZyb20gJy4uL2NvbXBvbmVudHMvU3RvcnlMaXN0JztcbmltcG9ydCBMYXlvdXQgZnJvbSAnLi4vY29tcG9uZW50cy9MYXlvdXQnO1xuXG5jbGFzcyBJbmRleCBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG4gICAgc3RhdGljIGFzeW5jIGdldEluaXRpYWxQcm9wcyh7cmVxLCByZXMsIHF1ZXJ5fSl7XG4gICAgICAgIGxldCBzdG9yaWVzO1xuICAgICAgICBsZXQgcGFnZTtcblxuICAgICAgICBjb25zb2xlLmxvZyhxdWVyeSk7XG4gICAgICAgIHRyeXtcbiAgICAgICAgICAgIHBhZ2UgPSBOdW1iZXIocXVlcnkucGFnZSkgfHwgMTtcbiAgICAgICAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goYGh0dHBzOi8vbm9kZS1obmFwaS5oZXJva3VhcHAuY29tL25ld3M/cGFnZT0ke3BhZ2V9YCk7XG4gICAgICAgICAgICBzdG9yaWVzID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgICAgICB9Y2F0Y2goZXJyKXtcbiAgICAgICAgICAgIGNvbnNvbGUubG9nKGVycik7XG4gICAgICAgICAgICBzdG9yaWVzID0gW107XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIHsgcGFnZSwgc3RvcmllcyB9O1xuICAgIH1cbiAgICByZW5kZXIoKXtcbiAgICAgICAgY29uc3Qge3N0b3JpZXMsIHBhZ2V9ID0gdGhpcy5wcm9wcztcbiAgICAgICAgaWYoc3Rvcmllcy5sZW5ndGggPT09IDAgKXtcbiAgICAgICAgICAgIHJldHVybiA8RXJyb3Igc3RhdHVzQ29kZT17NTAzfSAvPlxuICAgICAgICB9XG4gICAgICAgIHJldHVybihcbiAgICAgICAgICAgIDxMYXlvdXQgdGl0bGU9XCJIYWNrZXIgTmV3c1wiIGRlc2NyaXB0aW9uPVwiQSBIYWNrZXIgTmV3cyBDbG9uZVwiPlxuICAgICAgICAgICAgICAgIDxoMT5IQUNLRVIgTkVYVDwvaDE+XG4gICAgICAgICAgICAgICAgPFN0b3J5TGlzdCBzdG9yaWVzPXtzdG9yaWVzfSAvPlxuICAgICAgICAgICAgICAgIDxmb290ZXI+XG4gICAgICAgICAgICAgICAgICAgIDxMaW5rIGhyZWY9e2A/cGFnZT0ke3BhZ2UgKyAxfWB9PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGE+TkVYVCBQQUdFICh7cGFnZSArIDF9KTwvYT5cbiAgICAgICAgICAgICAgICAgICAgPC9MaW5rPlxuICAgICAgICAgICAgICAgIDwvZm9vdGVyPlxuICAgICAgICAgICAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgICAgICAgICAgICAgZm9vdGVyIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHBhZGRpbmc6IDFlbTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICBmb290ZXIgYSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yOiBibGFjaztcbiAgICAgICAgICAgICAgICAgICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIGB9PC9zdHlsZT5cbiAgICAgICAgICAgIDwvTGF5b3V0PlxuICAgICAgICApXG4gICAgfVxufVxuXG5leHBvcnQgZGVmYXVsdCBJbmRleDsiXX0= */\n/*@ sourceURL=/Users/axelobscura/Desktop/hacker-next/pages/index.js */"));
   }
 
 }
