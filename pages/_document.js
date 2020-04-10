@@ -1,11 +1,11 @@
-import Document, {Head, Main, NextScript} from 'next/document';
+import Document, { Head, Main, NextScript } from 'next/document';
 
 export default class myDocument extends Document {
-    render(){
-        return(
+    render() {
+        return (
             <html lang="en-US">
                 <Head>
-                    <link rel="manifest" href="/static/manifest.json" />
+                    <link rel="manifest" href="/manifest.json" />
 
                     <meta name="mobile-web-app-capable" content="yes" />
                     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -17,10 +17,10 @@ export default class myDocument extends Document {
                     <meta name="msapplication-starturl" content="/" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-                    <link rel="icon" type="image/png" sizes="512x512" href="/static/icons/icon-512x512" />
-                    <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="/static/icons/icon-512x512" />
-                    <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192x192" />
-                    <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="/static/icons/icon-192x192" />
+                    <link rel="icon" type="image/png" sizes="152x152" href="/icons/icon-152x152" />
+                    <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="/icons/icon-152x152" />
+                    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192" />
+                    <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="/icons/icon-192x192" />
                 </Head>
                 <body>
                     <Main />
